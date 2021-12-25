@@ -4,7 +4,7 @@ import datetime
 import schedule
 import time
 
-def creatingDroplets(image_id):
+def creatingDroplets():
     droplet_url = 'https://api.digitalocean.com/v2/droplets'
     token = 'e93c9340e7de74d3eaf9b5b0c003d08c6fc810829dff1f1e149c4f4c7a69b122'
 
@@ -40,7 +40,7 @@ def creatingDroplets(image_id):
     res = requests.post(droplet_url, data, headers={'Authorization': f'Bearer {token}'})
     print(res.json())
 
-creatingDroplets(93525508)
+# creatingDroplets()
 
 def removingDroplets():
     token = 'e93c9340e7de74d3eaf9b5b0c003d08c6fc810829dff1f1e149c4f4c7a69b122'
@@ -195,16 +195,14 @@ def autoBalancer():
     print(average_value)
     
     # Khud sy kuch b set kar deya ha abi ky leye
-    threshold = 5000 
+    threshold = 10000 
   
     # conditions
 
     if average_value > threshold:
-        # creatingDroplets(droplet_image_id)
-        pass
+        creatingDroplets(droplet_image_id)
     elif average_value < threshold:
-        # removingDroplets()
-        pass
+        removingDroplets()
 
 autoBalancer()
 
