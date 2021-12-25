@@ -200,7 +200,7 @@ def autoBalancer():
     # conditions
 
     if average_value > threshold:
-        creatingDroplets(droplet_image_id)
+        creatingDroplets()
     elif average_value < threshold:
         removingDroplets()
 
