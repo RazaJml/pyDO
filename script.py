@@ -196,9 +196,9 @@ def autoBalancer():
     single_cpu_val = sum(single_cpu) / len(single_cpu)
 
 
-    print(f'Load1 stats value {single_load1} \n')
-    print(f'Load5 stats value {single_load5} \n')
-    print(f'CPU stats value {single_cpu} \n')
+    print(f'Load1 stats value {single_load1_val} \n')
+    print(f'Load5 stats value {single_load5_val} \n')
+    print(f'CPU stats value {single_cpu_val} \n')
 
     print(f"Total averge value {average_value}")
     
