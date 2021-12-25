@@ -49,7 +49,7 @@ def removingDroplets():
 
     droplet_ids = load_balancer_data['load_balancers'][0]['droplet_ids']
 
-    if len(droplet_ids) > 0:
+    if len(droplet_ids) > 1:
         remove_droplet_url = f'https://api.digitalocean.com/v2/droplets/{droplet_ids[-1]}'
         res = requests.delete(remove_droplet_url, headers={'Authorization': f'Bearer {token}'})
 
@@ -208,9 +208,9 @@ def autoBalancer():
   
     # conditions
 
-    if average_value > threshold:
+    if single_load1_val > threshold:
         creatingDroplets()
-    elif average_value < threshold:
+    elif single_load1_val < threshold:
         removingDroplets()
 
 autoBalancer()
