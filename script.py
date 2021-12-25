@@ -32,7 +32,7 @@ def creatingDroplets():
         "size":"s-1vcpu-1gb",
         "image": snapshot,
         "password":'Qwerty,123raza',
-        "tags":["testing"],
+        "tags":["web-page"],
     }
 
     res = requests.post(droplet_url, data, headers={'Authorization': f'Bearer {token}'})
