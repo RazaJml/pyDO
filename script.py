@@ -142,7 +142,7 @@ def autoBalancer():
     for val in load1_stats_results[0]:
         load1_stats_values.append(val['values'])
     
-    print(f' load 1 Stats = {load1_stats_values}')
+    # print(f' load 1 Stats = {load1_stats_values}')
 
     # Load 5 values
 
@@ -154,7 +154,7 @@ def autoBalancer():
     for val in load5_stats_results[0]:
         load5_stats_values.append(val['values'])
     
-    print(f'Load 5 stats = {load5_stats_values}')
+    # print(f'Load 5 stats = {load5_stats_values}')
 
     # CPU Values
 
@@ -166,22 +166,39 @@ def autoBalancer():
     for val in cpu_stats_results[0]:
         cpu_stats_values.append(val['values'])
     
-    print(f' CPU stats =  {cpu_stats_values}')
+    # print(f' CPU stats =  {cpu_stats_values}')
 
     # Average Value
 
     total_values = []
 
+    single_load1 = []
+    single_load5 = []
+    single_cpu = []
+
+
     for i in range(len(cpu_stats_values)):
         total_values.append(int(float(cpu_stats_values[i][0][1])))    
+        single_cpu.append(int(float(cpu_stats_values[i][0][1])))    
 
     for i in range(len(load1_stats_values)):
         total_values.append(int(float(load1_stats_values[i][0][1])))    
+        single_load1.append(int(float(load1_stats_values[i][0][1])))    
 
     for i in range(len(load5_stats_values)):
         total_values.append(int(float(load5_stats_values[i][0][1]))) 
+        single_load5.append(int(float(load5_stats_values[i][0][1])))    
 
     average_value = sum(total_values) / len(total_values)
+
+    single_load1_val = sum(single_load1) / len(single_load1)
+    single_load5_val = sum(single_load5) / len(single_load5)
+    single_cpu_val = sum(single_cpu) / len(single_cpu)
+
+
+    print(f'Load1 stats value {single_load1} \n')
+    print(f'Load5 stats value {single_load5} \n')
+    print(f'CPU stats value {single_cpu} \n')
 
     print(f"Total averge value {average_value}")
     
