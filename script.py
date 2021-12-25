@@ -19,8 +19,6 @@ def creatingDroplets():
 
     droplet_ids = load_balancer_data['load_balancers'][0]['droplet_ids']
 
-    print(f'soe {droplet_ids}')
-
     one_drop_url = f'https://api.digitalocean.com/v2/droplets/{droplet_ids[0]}/'
 
     get_one_drop_req = requests.get(one_drop_url, headers={'Authorization': f'Bearer {token}'})
@@ -38,7 +36,7 @@ def creatingDroplets():
     }
 
     res = requests.post(droplet_url, data, headers={'Authorization': f'Bearer {token}'})
-    print(res.json())
+    print(f"Newly created droplet  {res.json()} ")
 
 # creatingDroplets()
 
@@ -64,12 +62,10 @@ def autoBalancer():
     load_balancer_url = "https://api.digitalocean.com/v2/load_balancers"
     token = 'e93c9340e7de74d3eaf9b5b0c003d08c6fc810829dff1f1e149c4f4c7a69b122'
 
-
     droplet_res = requests.get(droplet_url, headers={'Authorization': f'Bearer {token}'})
     droplet_res_data = droplet_res.json()
     droplet_image_id = droplet_res_data['droplets'][0]['image']['id']
 
-    print(droplet_image_id)
 
     # ssh_key_url = "https://api.digitalocean.com/v2/account/keys"
     # ssh_key_res = requests.get(ssh_key_url, headers={'Authorization': f'Bearer {token}'})
@@ -82,12 +78,7 @@ def autoBalancer():
 
     droplet_ids = load_balancer_data['load_balancers'][0]['droplet_ids']
 
-    print(droplet_ids)
-
-    # snapshots
-
-
-
+    printf(f' LoadBalncer attached Droplate ids :  {droplet_ids}')
 
     # Geting Stats usung droplet ids
 
@@ -151,7 +142,7 @@ def autoBalancer():
     for val in load1_stats_results[0]:
         load1_stats_values.append(val['values'])
     
-    print(load1_stats_values)
+    print(f' load 1 Stats = {load1_stats_values}')
 
     # Load 5 values
 
@@ -163,7 +154,7 @@ def autoBalancer():
     for val in load5_stats_results[0]:
         load5_stats_values.append(val['values'])
     
-    print(load5_stats_values)
+    print(f'Load 5 stats = {load5_stats_values}')
 
     # CPU Values
 
@@ -175,7 +166,7 @@ def autoBalancer():
     for val in cpu_stats_results[0]:
         cpu_stats_values.append(val['values'])
     
-    print(cpu_stats_values)
+    print(f' CPU stats =  {cpu_stats_values}')
 
     # Average Value
 
@@ -192,7 +183,7 @@ def autoBalancer():
 
     average_value = sum(total_values) / len(total_values)
 
-    print(average_value)
+    print(f"Total averge value {average_value}")
     
     # Khud sy kuch b set kar deya ha abi ky leye
     threshold = 10000 
