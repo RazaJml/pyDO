@@ -78,7 +78,7 @@ def autoBalancer():
 
     droplet_ids = load_balancer_data['load_balancers'][0]['droplet_ids']
 
-    printf(f' LoadBalncer attached Droplate ids :  {droplet_ids}')
+    print(f' LoadBalncer attached Droplate ids :  {droplet_ids}')
 
     # Geting Stats usung droplet ids
 
